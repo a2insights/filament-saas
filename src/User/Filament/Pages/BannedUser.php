@@ -32,7 +32,7 @@ class BannedUser extends BasePage
         $this->ban = Auth::user()->bans->first();
     }
 
-    public function getTitle(): \Illuminate\Contracts\Support\Htmlable|string
+    public function getTitle(): \Illuminate\Contracts\Support\Htmlable | string
     {
         return static::$title ?? (string) str(__('filament-lockscreen::default.heading'))
             ->kebab()

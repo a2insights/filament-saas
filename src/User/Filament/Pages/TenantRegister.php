@@ -74,12 +74,14 @@ class TenantRegister extends BaseTenantRegister
     protected function getTermsFormComponent(): Component
     {
         $html = new HtmlString(
-            trans('filament-saas::default.users.register.accept_terms',
+            trans(
+                'filament-saas::default.users.register.accept_terms',
                 [
                     'terms_url' => FilamentSaas::getTermsOfServiceRoute(),
                     'privacy_policy_url' => FilamentSaas::getPrivacyPolicyRoute(),
                 ]
-            ));
+            )
+        );
 
         return Checkbox::make('terms')
             ->label($html)

@@ -17,7 +17,7 @@ class Policy extends BasePage
 
     public string $policy;
 
-    public function getTitle(): string|Htmlable
+    public function getTitle(): string | Htmlable
     {
         return __('filament-saas::default.privacy-policy.title');
     }

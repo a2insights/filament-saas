@@ -27,7 +27,7 @@ class UserPlugin implements Plugin
      * Class MyClass overrides inline block form.
      *
      * @phpstan-ignore-next-line */
-    public static function get(): Plugin|FilamentManager
+    public static function get(): Plugin | FilamentManager
     {
         return filament(app(static::class)->getId());
     }

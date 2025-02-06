@@ -63,7 +63,7 @@ class UserResource extends Resource
 
     public static function getGlobalSearchResultTitle(Model $record): string
     {
-        return $record->name.' - '.$record->email;
+        return $record->name . ' - ' . $record->email;
     }
 
     public static function form(Form $form): Form

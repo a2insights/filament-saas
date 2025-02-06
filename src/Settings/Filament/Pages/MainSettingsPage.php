@@ -180,7 +180,7 @@ class MainSettingsPage extends SettingsPage
                         ->image()
                         ->directory('images')
                         ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
-                            return 'logo.'.$file->guessExtension();
+                            return 'logo.' . $file->guessExtension();
                         }),
                     FileUpload::make('og')
                         ->label(__('filament-saas::default.settings.style.og.label'))
@@ -189,7 +189,7 @@ class MainSettingsPage extends SettingsPage
                         ->image()
                         ->directory('images')
                         ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
-                            return 'og.'.$file->guessExtension();
+                            return 'og.' . $file->guessExtension();
                         }),
                     TextInput::make('logo_size')
                         ->label(__('filament-saas::default.settings.style.logo_size.label'))
@@ -201,7 +201,7 @@ class MainSettingsPage extends SettingsPage
                         ->image()
                         ->directory('images')
                         ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
-                            return 'favicon.'.$file->guessExtension();
+                            return 'favicon.' . $file->guessExtension();
                         }),
                 ])
                 ->collapsed()
