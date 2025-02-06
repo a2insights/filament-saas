@@ -1,9 +1,9 @@
 # This is my package filament-saas
 
-<!-- [![Latest Version on Packagist](https://img.shields.io/packagist/v/A2Insights/filament-saas.svg?style=flat-square)](https://packagist.org/packages/A2Insights/filament-saas)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/A2Insights/filament-saas/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/A2Insights/filament-saas/actions?query=workflow%3Arun-tests+branch%3Amain) -->
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/A2Insights/filament-saas/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/A2Insights/filament-saas/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/A2Insights/filament-saas.svg?style=flat-square)](https://packagist.org/packages/A2Insights/filament-saas)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/a2insights/filament-saas.svg?style=flat-square)](https://packagist.org/packages/a2insights/filament-saas)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/a2insights/filament-saas/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/a2insights/filament-saas/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/a2insights/filament-saas/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/a2insights/filament-saas/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/a2insights/filament-saas.svg?style=flat-square)](https://packagist.org/packages/a2insights/filament-saas)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
@@ -20,7 +20,7 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 You can install the package via composer:
 
 ```bash
-composer require A2Insights/filament-saas
+composer require a2insights/filament-saas
 ```
 
 You can publish and run the migrations with:

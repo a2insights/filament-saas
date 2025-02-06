@@ -1,16 +1,22 @@
 <?php
 
-namespace A2Insights\FilamentSaas\Tests;
+namespace a2insights\FilamentSaas\Tests;
 
-use A2Insights\FilamentSaas\FilamentSaasServiceProvider;
-use A2Insights\FilamentSaas\User\Filament\Components\Phone;
-use A2Insights\FilamentSaas\User\Filament\Components\Username;
-use A2Insights\FilamentSaas\User\Filament\Pages\BannedUser;
-use A2Insights\FilamentSaas\User\Filament\Pages\Register;
+use a2insights\FilamentSaas\FilamentSaasServiceProvider;
+use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
+use BladeUI\Icons\BladeIconsServiceProvider;
+use Filament\Actions\ActionsServiceProvider;
+use Filament\FilamentServiceProvider;
+use Filament\Forms\FormsServiceProvider;
+use Filament\Infolists\InfolistsServiceProvider;
+use Filament\Notifications\NotificationsServiceProvider;
+use Filament\Support\SupportServiceProvider;
+use Filament\Tables\TablesServiceProvider;
+use Filament\Widgets\WidgetsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Livewire\Livewire;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
+use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -19,16 +25,25 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'A2Insights\\FilamentSaas\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'a2insights\\FilamentSaas\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
-
-        $this->registerLivewireComponents();
     }
 
     protected function getPackageProviders($app)
     {
         return [
+            ActionsServiceProvider::class,
+            BladeCaptureDirectiveServiceProvider::class,
+            BladeHeroiconsServiceProvider::class,
+            BladeIconsServiceProvider::class,
+            FilamentServiceProvider::class,
+            FormsServiceProvider::class,
+            InfolistsServiceProvider::class,
             LivewireServiceProvider::class,
+            NotificationsServiceProvider::class,
+            SupportServiceProvider::class,
+            TablesServiceProvider::class,
+            WidgetsServiceProvider::class,
             FilamentSaasServiceProvider::class,
         ];
     }
@@ -36,20 +51,5 @@ class TestCase extends Orchestra
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
-
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_filament-saas_table.php.stub';
-        $migration->up();
-        */
-    }
-
-    private function registerLivewireComponents(): self
-    {
-        Livewire::component('BannedUser', BannedUser::class);
-        Livewire::component('Register', Register::class);
-        Livewire::component('phone', Phone::class);
-        Livewire::component('username', Username::class);
-
-        return $this;
     }
 }

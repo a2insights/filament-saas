@@ -4,10 +4,14 @@
     "keywords": [
         "laravel",
         "filament",
-        "A2Insights",
+        "a2insights",
         "filament-saas"
     ],
     "homepage": "https://github.com/a2insights/filament-saas",
+    "support": {
+        "issues": "https://github.com/a2insights/filament-saas/issues",
+        "source": "https://github.com/a2insights/filament-saas"
+    },
     "license": "MIT",
     "authors": [
         {
@@ -85,18 +89,13 @@
         "pestphp/pest-plugin-laravel": "^2.3"
     },
     "autoload": {
-        "files": [
-            "src/helpers.php"
-        ],
         "psr-4": {
-            "A2Insights\\FilamentSaas\\": "src/",
-            "A2Insights\\FilamentSaas\\Database\\Factories\\": "database/factories/"
+            "A2Insights\\FilamentSaas\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "A2Insights\\FilamentSaas\\Tests\\": "tests/",
-            "Workbench\\App\\": "workbench/app/"
+            "A21ns1g4ts\\FilamentSaas\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -112,7 +111,6 @@
             "@composer run build",
             "@php vendor/bin/testbench serve"
         ],
-        "analyse": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
         "format": "vendor/bin/pint"
@@ -120,18 +118,16 @@
     "config": {
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true,
-            "phpstan/extension-installer": true,
-            "php-http/discovery": true
+            "pestphp/pest-plugin": true
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "A2Insights\\FilamentSaas\\FilamentSaasServiceProvider"
+                "A21ns1g4ts\\FilamentSaas\\FilamentSaasServiceProvider"
             ],
             "aliases": {
-                "FilamentSaas": "A2Insights\\FilamentSaas\\Facades\\FilamentSaas"
+                "FilamentSaas": "A21ns1g4ts\\FilamentSaas\\Facades\\FilamentSaas"
             }
         }
     },
