@@ -1,4 +1,5 @@
 <?php
+
 namespace A2Insights\FilamentSaas;
 
 use A2Insights\FilamentSaas\Features\FeaturesServiceProvider;
