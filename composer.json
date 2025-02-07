@@ -95,7 +95,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "A21ns1g4ts\\FilamentSaas\\Tests\\": "tests/"
+            "A2Insights\\FilamentSaas\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -124,10 +124,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "A21ns1g4ts\\FilamentSaas\\FilamentSaasServiceProvider"
+                "A2Insights\\FilamentSaas\\FilamentSaasServiceProvider"
             ],
             "aliases": {
-                "FilamentSaas": "A21ns1g4ts\\FilamentSaas\\Facades\\FilamentSaas"
+                "FilamentSaas": "A2Insights\\FilamentSaas\\Facades\\FilamentSaas"
             }
         }
     },
