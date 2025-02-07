@@ -2,6 +2,7 @@
 
 namespace A2Insights\FilamentSaas;
 
+use A2Insights\FilamentSaas\Commands\FilamentSaasCommand;
 use A2Insights\FilamentSaas\Features\FeaturesServiceProvider;
 use A2Insights\FilamentSaas\Middleware\MiddlewareServiceProvider;
 use A2Insights\FilamentSaas\Settings\SettingsServiceProvider;
@@ -51,14 +52,14 @@ class FilamentSaasServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package->name(static::$name)
-            ->hasCommands($this->getCommands())
-            ->hasInstallCommand(function (InstallCommand $command) {
-                $command
-                    ->publishConfigFile()
-                    ->publishMigrations()
-                    ->askToRunMigrations()
-                    ->askToStarRepoOnGitHub('A2Insights/filament-saas');
-            });
+            ->hasCommands($this->getCommands());
+        // ->hasInstallCommand(function (InstallCommand $command) {
+        //     $command
+        //         ->publishConfigFile()
+        //         ->publishMigrations()
+        //         ->askToRunMigrations()
+        //         ->askToStarRepoOnGitHub('A2Insights/filament-saas');
+        // });
 
         $configFileName = $package->shortName();
 
@@ -130,7 +131,7 @@ class FilamentSaasServiceProvider extends PackageServiceProvider
      */
     protected function getCommands(): array
     {
-        return [];
+        return [FilamentSaasCommand::class];
     }
 
     /**
