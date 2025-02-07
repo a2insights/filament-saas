@@ -7,7 +7,7 @@ use A2Insights\FilamentSaas\Middleware\MiddlewareServiceProvider;
 use A2Insights\FilamentSaas\Settings\SettingsServiceProvider;
 use A2Insights\FilamentSaas\System\SystemServiceProvider;
 use A2Insights\FilamentSaas\Tenant\TenantServiceProvider;
-use a2insights\FilamentSaas\Testing\TestsFilamentSaas;
+use A2Insights\FilamentSaas\Testing\TestsFilamentSaas;
 use A2Insights\FilamentSaas\User\UserServiceProvider;
 use A2Insights\FilamentSaas\Webhook\WebhookServiceProvider;
 use Filament\Support\Assets\AlpineComponent;
@@ -57,7 +57,7 @@ class FilamentSaasServiceProvider extends PackageServiceProvider
                     ->publishConfigFile()
                     ->publishMigrations()
                     ->askToRunMigrations()
-                    ->askToStarRepoOnGitHub('a2insights/filament-saas');
+                    ->askToStarRepoOnGitHub('A2Insights/filament-saas');
             });
 
         $configFileName = $package->shortName();
@@ -110,7 +110,7 @@ class FilamentSaasServiceProvider extends PackageServiceProvider
 
     protected function getAssetPackageName(): ?string
     {
-        return 'a2insights/filament-saas';
+        return 'A2Insights/filament-saas';
     }
 
     /**

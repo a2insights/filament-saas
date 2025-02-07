@@ -1,5 +1,5 @@
 <?php
 
-use a2insights\FilamentSaas\Tests\TestCase;
+use A2Insights\FilamentSaas\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);
