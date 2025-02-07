@@ -1,6 +1,6 @@
 <?php
 
-namespace A21ns1g4ts\FilamentSaas\Testing;
+namespace A2Insights\FilamentSaas\Testing;
 
 use Livewire\Features\SupportTesting\Testable;
 

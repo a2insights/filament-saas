@@ -1,8 +1,8 @@
 <?php
 
-namespace use A2insights\FilamentSaas\Tests;
+namespace A2Insights\FilamentSaas\Tests;
 
-use A2Insightsghts\FilamentSaas\FilamentSaasServiceProvider;
+use A2Insights\FilamentSaas\FilamentSaasServiceProvider;
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
 use Filament\Actions\ActionsServiceProvider;
@@ -25,7 +25,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'A2Insightsghts\\FilamentSaas\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'A2Insights\\FilamentSaas\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
