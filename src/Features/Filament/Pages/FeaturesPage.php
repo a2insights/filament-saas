@@ -211,7 +211,6 @@ class FeaturesPage extends SettingsPage
                                             PhoneInput::make('number')
                                                 ->label(__('filament-saas::default.features.whatsapp_chat.attendants.phone.label'))
                                                 ->defaultCountry('BR')
-                                                ->disableLookup()
                                                 ->validateFor(lenient: true)
                                                 ->required()
                                                 ->columnSpan(2),
