@@ -87,6 +87,9 @@ class Register extends AuthRegister
     {
         return PhoneInput::make('phone')
             ->label(__('filament-saas::default.users.register.phone'))
+            ->defaultCountry('BR')
+            ->disableLookup()
+            ->unique(FilamentSaas::getUserModel())
             ->required();
     }
 }
