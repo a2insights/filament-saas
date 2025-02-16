@@ -32,7 +32,10 @@ class Phone extends MyProfileComponent
         return $form
             ->schema([
                 PhoneInput::make('phone')
+                    ->ipLookup(fn () => 'BR')
+                    ->initialCountry('BR')
                     ->defaultCountry('BR')
+                    ->disableLookup()
                     ->label(__('filament-saas::default.users.register.phone'))
                     ->unique(FilamentSaas::getUserModel(), ignorable: $this->user)
                     ->validateFor(
