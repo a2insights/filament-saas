@@ -9,7 +9,9 @@ use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\App;
 use Jeffgreco13\FilamentBreezy\Livewire\MyProfileComponent;
+use libphonenumber\PhoneNumberType;
 use Ysfkaya\FilamentPhoneInput\Forms\PhoneInput;
+use Ysfkaya\FilamentPhoneInput\PhoneInputNumberType;
 
 class Phone extends MyProfileComponent
 {
@@ -35,10 +37,13 @@ class Phone extends MyProfileComponent
                     ->initialCountry('BR')
                     ->label(__('filament-saas::default.users.register.phone'))
                     ->unique(FilamentSaas::getUserModel(), ignorable: $this->user)
+                    ->initialCountry('BR')
+                    ->inputNumberFormat(PhoneInputNumberType::NATIONAL)
                     ->validateFor(
                         lenient: true,
-                    )
-                    ->required(),
+                        type: PhoneNumberType::MOBILE,
+                        country: 'BR',
+                    ),
             ])->statePath('data');
     }
 

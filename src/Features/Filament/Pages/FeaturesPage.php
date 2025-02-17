@@ -15,7 +15,9 @@ use Filament\Forms\Components\Toggle;
 use Filament\Pages\SettingsPage;
 use Icetalker\FilamentPicker\Forms\Components\Picker;
 use Illuminate\Support\Facades\App;
+use libphonenumber\PhoneNumberType;
 use Ysfkaya\FilamentPhoneInput\Forms\PhoneInput;
+use Ysfkaya\FilamentPhoneInput\PhoneInputNumberType;
 
 class FeaturesPage extends SettingsPage
 {
@@ -210,9 +212,13 @@ class FeaturesPage extends SettingsPage
                                                 ->columnSpan(3),
                                             PhoneInput::make('number')
                                                 ->label(__('filament-saas::default.features.whatsapp_chat.attendants.phone.label'))
-                                                ->defaultCountry('BR')
-                                                ->validateFor(lenient: true)
-                                                ->required()
+                                                ->initialCountry('BR')
+                                                ->inputNumberFormat(PhoneInputNumberType::NATIONAL)
+                                                ->validateFor(
+                                                    lenient: true,
+                                                    type: PhoneNumberType::MOBILE,
+                                                    country: 'BR',
+                                                )
                                                 ->columnSpan(2),
                                         ])
                                         ->columns(5),
