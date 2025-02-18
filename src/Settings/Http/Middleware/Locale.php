@@ -13,11 +13,11 @@ class Locale
 {
     public function handle(Request $request, Closure $next): Response
     {
-        $userSettings = $request->user()?->settings;
+        $userSettings = Cache::rememberForever('filament-saas.user-settings', fn () => $request->user()?->settings);
 
         $settings = Cache::remember('filament-saas.settings', now()->addHours(10), fn () => app(\A2Insights\FilamentSaas\Settings\Settings::class));
 
-        $locale = $userSettings?->locale ?? $settings->locale;
+        $locale = $userSettings->locale ?? $settings->locale;
 
         if ($locale) {
             Config::set('app.locale', $locale);
