@@ -17,7 +17,6 @@ use Icetalker\FilamentPicker\Forms\Components\Picker;
 use Illuminate\Support\Facades\App;
 use libphonenumber\PhoneNumberType;
 use Ysfkaya\FilamentPhoneInput\Forms\PhoneInput;
-use Ysfkaya\FilamentPhoneInput\PhoneInputNumberType;
 
 class FeaturesPage extends SettingsPage
 {
@@ -213,11 +212,9 @@ class FeaturesPage extends SettingsPage
                                             PhoneInput::make('number')
                                                 ->label(__('filament-saas::default.features.whatsapp_chat.attendants.phone.label'))
                                                 ->initialCountry('BR')
-                                                ->inputNumberFormat(PhoneInputNumberType::NATIONAL)
                                                 ->validateFor(
                                                     lenient: true,
                                                     type: PhoneNumberType::MOBILE,
-                                                    country: 'BR',
                                                 )
                                                 ->columnSpan(2),
                                         ])

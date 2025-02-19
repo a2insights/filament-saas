@@ -14,7 +14,6 @@ use Illuminate\Support\HtmlString;
 use libphonenumber\PhoneNumberType;
 use Wallo\FilamentCompanies\Pages\Auth\Register as BaseTenantRegister;
 use Ysfkaya\FilamentPhoneInput\Forms\PhoneInput;
-use Ysfkaya\FilamentPhoneInput\PhoneInputNumberType;
 
 /**
  * @property Form $form
@@ -96,11 +95,9 @@ class TenantRegister extends BaseTenantRegister
             ->label(__('filament-saas::default.users.register.phone'))
             ->unique(FilamentSaas::getUserModel())
             ->initialCountry('BR')
-            ->inputNumberFormat(PhoneInputNumberType::NATIONAL)
             ->validateFor(
                 lenient: true,
                 type: PhoneNumberType::MOBILE,
-                country: 'BR',
             )
             ->required();
     }

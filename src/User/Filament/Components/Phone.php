@@ -38,11 +38,9 @@ class Phone extends MyProfileComponent
                     ->label(__('filament-saas::default.users.register.phone'))
                     ->unique(FilamentSaas::getUserModel(), ignorable: $this->user)
                     ->initialCountry('BR')
-                    ->inputNumberFormat(PhoneInputNumberType::NATIONAL)
                     ->validateFor(
                         lenient: true,
                         type: PhoneNumberType::MOBILE,
-                        country: 'BR',
                     ),
             ])->statePath('data');
     }
