@@ -78,7 +78,7 @@ class TenantRegister extends BaseTenantRegister
             trans(
                 'filament-saas::default.users.register.accept_terms',
                 [
-                    'terms_url' => FilamentSaas::getTermsOfServiceRoute(),
+                    'terms_of_service_url' => FilamentSaas::getTermsOfServiceRoute(),
                     'privacy_policy_url' => FilamentSaas::getPrivacyPolicyRoute(),
                 ]
             )
