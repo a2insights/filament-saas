@@ -11,6 +11,6 @@ return [
         'model' => App\Models\Company::class,
     ],
 
-    'terms_of_service_url' => 'terms-of-service',
-    'privacy_url' => 'privacy-policy',
+    'terms_of_service_url' => 'terms-of-service_url',
+    'privacy_policy_url' => 'privacy-policy_url',
 ];

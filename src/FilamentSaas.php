@@ -16,7 +16,7 @@ class FilamentSaas
 
     public static function getPrivacyPolicyRoute(): string
     {
-        return config('filament-saas.privacy_url', 'privacy-policy');
+        return config('filament-saas.privacy_policy_url', 'privacy-policy');
     }
 
     public static function getTermsOfServiceRoute(): string
