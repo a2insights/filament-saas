@@ -3,7 +3,7 @@
 return [
     'users' => [
         'register' => [
-            'accept_terms' => 'Eu aceito os <a href=":terms_of_service_url" class="underline">Termos de Uso</a> e as <a href=":privacy_policy_url" class="underline">Políticas</a>',
+            'accept_terms' => 'Eu aceito os <a href=":terms_of_service_url" class="underline">Termos de Uso</a> e nossa <a href=":privacy_policy_url" class="underline">Política de Privacidade</a>',
             'phone' => 'Telefone',
         ],
         'profile' => [
