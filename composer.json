@@ -33,7 +33,7 @@
         "bezhansalleh/filament-shield": "^3.3",
         "blade-ui-kit/blade-heroicons": "^2.1",
         "blade-ui-kit/blade-icons": "^1.6",
-        "blade-ui-kit/blade-ui-kit": "^0.6.2",
+        "blade-ui-kit/blade-ui-kit": "^0.7.0",
         "blade-ui-kit/blade-zondicons": "^1.4",
         "brickx/maintenance-switch": "^1.0",
         "cms-multi/filament-clear-cache": "^2.0",
