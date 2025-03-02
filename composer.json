@@ -60,7 +60,7 @@
         "malzariey/filament-daterangepicker-filter": "^3.1",
         "marjose123/filament-webhook-server": "^2.1.6",
         "opcodesio/log-viewer": "^3.10",
-        "openai-php/laravel": "^0.10.1",
+        "openai-php/laravel": "^0.11.0",
         "pxlrbt/filament-environment-indicator": "^2.0",
         "pxlrbt/filament-spotlight": "^1.2",
         "ralphjsmit/laravel-seo": "^1.6",
