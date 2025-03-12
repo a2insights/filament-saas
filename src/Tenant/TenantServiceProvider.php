@@ -27,17 +27,11 @@ class TenantServiceProvider extends PackageServiceProvider
         }
 
         FilamentSaas::getCompanyModel()::created(function (Model $company) {
-            $company->initialize();
+            $company->run(function () {
+                $storage_path = storage_path();
 
-            $cachePath = storage_path('framework/cache');
-
-            if (! is_dir($cachePath)) {
-                if (! mkdir($cachePath, 0777, true) && ! is_dir($cachePath)) {
-                    throw new \RuntimeException(sprintf('Directory "%s" was not created', $cachePath));
-                }
-            }
-
-            $company->end();
+                mkdir("$storage_path/framework/cache", 0777, true);
+            });
         });
     }
 
