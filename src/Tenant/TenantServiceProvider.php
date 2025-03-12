@@ -26,13 +26,14 @@ class TenantServiceProvider extends PackageServiceProvider
             return;
         }
 
-        FilamentSaas::getCompanyModel()::created(function (Model $company) {
-            $company->run(function () {
-                $storage_path = storage_path();
+        // TODO: Real time facades issue
+        // FilamentSaas::getCompanyModel()::created(function (Model $company) {
+        //     $company->run(function () {
+        //         $storage_path = storage_path();
 
-                mkdir("$storage_path/framework/cache", 0777, true);
-            });
-        });
+        //         mkdir("$storage_path/framework/cache", 0777, true);
+        //     });
+        // });
     }
 
     public function configurePackage(Package $package): void
