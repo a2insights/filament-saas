@@ -92,7 +92,7 @@ class Register extends AuthRegister
             ->initialCountry('BR')
             ->validateFor(
                 lenient: true,
-                type: PhoneNumberType::MOBILE,
+                type: PhoneNumberType::MOBILE->value,
             )
             ->required();
     }
