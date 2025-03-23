@@ -214,7 +214,7 @@ class FeaturesPage extends SettingsPage
                                                 ->initialCountry('BR')
                                                 ->validateFor(
                                                     lenient: true,
-                                                    type: PhoneNumberType::MOBILE->value,
+                                                    type: PhoneNumberType::MOBILE,
                                                 )
                                                 ->columnSpan(2),
                                         ])

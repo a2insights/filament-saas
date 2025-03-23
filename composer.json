@@ -44,6 +44,7 @@
         "filament/spatie-laravel-media-library-plugin": "^3.2",
         "filament/spatie-laravel-settings-plugin": "^3.2",
         "filament/tables": "^3.2",
+        "giggsey/libphonenumber-for-php": "9.0.0",
         "hasnayeen/themes": "^3.0",
         "husam-tariq/filament-database-schedule": "^2.0",
         "icetalker/filament-picker": "^0.3.0",
@@ -77,7 +78,7 @@
         "widiu7omo/filament-bandel": "^2.0",
         "wiebenieuwenhuis/filament-code-editor": "^1.1",
         "xlite-dev/filament-impersonate": "^2.0",
-        "ysfkaya/filament-phone-input": "^3.1",
+        "ysfkaya/filament-phone-input": "3.1.6",
         "z3d0x/filament-logger": "^0.7"
     },
     "require-dev": {

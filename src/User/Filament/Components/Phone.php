@@ -39,7 +39,7 @@ class Phone extends MyProfileComponent
                     ->initialCountry('BR')
                     ->validateFor(
                         lenient: true,
-                        type: PhoneNumberType::MOBILE->value,
+                        type: PhoneNumberType::MOBILE,
                     ),
             ])->statePath('data');
     }
