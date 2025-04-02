@@ -47,7 +47,7 @@
         "giggsey/libphonenumber-for-php": "8.13.55",
         "hasnayeen/themes": "^3.0",
         "husam-tariq/filament-database-schedule": "^2.0",
-        "icetalker/filament-picker": "^0.3.0",
+        "icetalker/filament-picker": "^0.4.0",
         "illuminate/contracts": "^11.0",
         "illuminate/support": "^11.0",
         "jeffgreco13/filament-breezy": "^2.4",
