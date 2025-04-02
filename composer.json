@@ -79,7 +79,7 @@
         "wiebenieuwenhuis/filament-code-editor": "^1.1",
         "xlite-dev/filament-impersonate": "^2.0",
         "ysfkaya/filament-phone-input": "3.1.8",
-        "z3d0x/filament-logger": "^0.7"
+        "z3d0x/filament-logger": "^0.8"
     },
     "require-dev": {
         "laravel/pint": "^1.14",
