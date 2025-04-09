@@ -5,6 +5,7 @@ namespace A2Insights\FilamentSaas;
 use A2Insights\FilamentSaas\Commands\FilamentSaasCommand;
 use A2Insights\FilamentSaas\Features\FeaturesServiceProvider;
 use A2Insights\FilamentSaas\Middleware\MiddlewareServiceProvider;
+use A2Insights\FilamentSaas\Providers\MarkdownServiceProvider;
 use A2Insights\FilamentSaas\Settings\SettingsServiceProvider;
 use A2Insights\FilamentSaas\System\SystemServiceProvider;
 use A2Insights\FilamentSaas\Tenant\TenantServiceProvider;
@@ -38,6 +39,7 @@ class FilamentSaasServiceProvider extends PackageServiceProvider
         $this->app->register(MiddlewareServiceProvider::class);
         $this->app->register(TenantServiceProvider::class);
         $this->app->register(WebhookServiceProvider::class);
+        $this->app->register(MarkdownServiceProvider::class);
 
         FilamentAsset::register([
             Css::make('filament-banner', base_path('vendor/kenepa/banner/resources/dist/banner.css')),
