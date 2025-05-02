@@ -1,4 +1,4 @@
-<?php
+Ban<?php
 
 namespace A2Insights\FilamentSaas\Tenant;
 

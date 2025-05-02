@@ -61,7 +61,6 @@
         "malzariey/filament-daterangepicker-filter": "^3.1",
         "marjose123/filament-webhook-server": "^2.1.6",
         "opcodesio/log-viewer": "^3.10",
-        "openai-php/laravel": "^0.11.0",
         "pxlrbt/filament-environment-indicator": "^2.0",
         "pxlrbt/filament-spotlight": "^1.2",
         "ralphjsmit/laravel-seo": "^1.6",
@@ -84,7 +83,7 @@
     "require-dev": {
         "laravel/pint": "^1.14",
         "nunomaduro/collision": "^8.1.1",
-        "orchestra/testbench": "^9.0.0",
+        "orchestra/testbench": "^9.13.0",
         "pestphp/pest": "^2.34",
         "pestphp/pest-plugin-arch": "^2.7",
         "pestphp/pest-plugin-laravel": "^2.3"
