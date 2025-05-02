@@ -53,7 +53,7 @@
         "jeffgreco13/filament-breezy": "^2.4",
         "joaopaulolndev/filament-pdf-viewer": "^1.0",
         "josespinal/filament-record-navigation": "^2.0",
-        "kenepa/banner": "^0.0.9",
+        "kenepa/banner": "^0.1.0",
         "laravel/sanctum": "^4.0",
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^3.5",
