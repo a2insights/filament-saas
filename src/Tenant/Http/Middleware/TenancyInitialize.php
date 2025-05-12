@@ -18,7 +18,7 @@ class TenancyInitialize
     {
         $company = Filament::getTenant();
         if ($company) {
-            $company->initialize();
+            tenancy()->initialize($company);
         }
 
         return $next($request);
