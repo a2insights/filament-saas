@@ -13,9 +13,9 @@ class Terms extends BasePage
 {
     protected ?string $maxContentWidth = 'full';
 
-    protected static string $view = 'filament-saas::settings.terms';
+    protected static string $view = 'filament-saas::features.terms-of-service';
 
-    public string $terms;
+    public string $termsOfService;
 
     public function getTitle(): string | Htmlable
     {
@@ -30,9 +30,9 @@ class Terms extends BasePage
             return redirect('/');
         }
 
-        $terms = App::make(TermsSettings::class)->service;
+        $termsOfService = App::make(TermsSettings::class)->service;
 
-        $this->terms = Str::markdown($terms);
+        $this->termsOfService = Str::markdown($termsOfService);
     }
 
     public function hasLogo(): bool

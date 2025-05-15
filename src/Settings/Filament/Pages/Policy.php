@@ -13,9 +13,9 @@ class Policy extends BasePage
 {
     protected ?string $maxContentWidth = 'full';
 
-    protected static string $view = 'filament-saas::settings.policy';
+    protected static string $view = 'filament-saas::features.privacy-policy';
 
-    public string $policy;
+    public string $privacyPolicy;
 
     public function getTitle(): string | Htmlable
     {
@@ -30,9 +30,9 @@ class Policy extends BasePage
             return redirect('/');
         }
 
-        $policy = App::make(TermsSettings::class)->privacy_policy;
+        $privacyPolicy = App::make(TermsSettings::class)->privacy_policy;
 
-        $this->policy = Str::markdown($policy);
+        $this->privacyPolicy = Str::markdown($privacyPolicy);
     }
 
     public function hasLogo(): bool

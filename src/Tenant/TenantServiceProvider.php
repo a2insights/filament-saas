@@ -14,13 +14,13 @@ class TenantServiceProvider extends PackageServiceProvider
 {
     public function bootingPackage(): void
     {
-        PanelSwitch::configureUsing(function (PanelSwitch $panelSwitch) {
-            $panelSwitch
-                ->simple()
-                ->visible(fn (): bool => auth()->user()?->hasAnyRole([
-                    'super_admin',
-                ]));
-        });
+        // PanelSwitch::configureUsing(function (PanelSwitch $panelSwitch) {
+        //     $panelSwitch
+        //         ->simple()
+        //         ->visible(fn (): bool => auth()->user()?->hasAnyRole([
+        //             'super_admin',
+        //         ]));
+        // });
 
         if (! class_exists(FilamentSaas::getCompanyModel())) {
             return;
