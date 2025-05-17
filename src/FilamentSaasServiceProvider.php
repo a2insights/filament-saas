@@ -105,6 +105,10 @@ class FilamentSaasServiceProvider extends PackageServiceProvider
                     $file->getRealPath() => base_path("stubs/filament-saas/{$file->getFilename()}"),
                 ], 'filament-saas-stubs');
             }
+
+            $this->publishes([
+                __DIR__ . '/../resources/assets/images' => public_path('img/avatars'),
+            ], 'filament-saas-assets-images');
         }
 
         // Testing
