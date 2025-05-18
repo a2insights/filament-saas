@@ -107,8 +107,8 @@ class FilamentSaasServiceProvider extends PackageServiceProvider
             }
 
             $this->publishes([
-                __DIR__ . '/../resources/assets/images' => public_path('img/avatars'),
-            ], 'filament-saas-assets-images');
+                __DIR__ . '/../resources/assets/avatars' => public_path('img/avatars'),
+            ], 'filament-saas-assets-avatars');
         }
 
         // Testing

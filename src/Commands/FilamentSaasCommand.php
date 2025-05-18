@@ -57,6 +57,7 @@ class FilamentSaasCommand extends Command
         $this->call('vendor:publish', ['--tag' => 'themes-assets', '--force' => true]);
         $this->call('vendor:publish', ['--tag' => 'log-viewer-assets', '--force' => true]);
         $this->call('vendor:publish', ['--tag' => 'filament-phone-input-assets', '--force' => true]);
+        $this->call('vendor:publish', ['--tag' => 'filament-saas-assets-avatars', '--force' => true]);
 
         $this->info('Creating super admin account');
         $superAdmin = $this->setUpSuperAdminAccount();
