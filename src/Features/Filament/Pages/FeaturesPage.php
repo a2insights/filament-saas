@@ -185,6 +185,9 @@ class FeaturesPage extends SettingsPage
                             FileUpload::make('avatar.src')
                                 ->label(__('filament-saas::default.features.whatsapp_chat.attendants.avatar.label'))
                                 ->avatar()
+                                ->disk('public')
+                                ->image()
+                                ->directory('images-attendants')
                                 ->columns(1),
                             Group::make()
                                 ->schema([
