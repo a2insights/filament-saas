@@ -77,7 +77,7 @@
         "widiu7omo/filament-bandel": "^2.0",
         "wiebenieuwenhuis/filament-code-editor": "^1.1",
         "xlite-dev/filament-impersonate": "^2.0",
-        "ysfkaya/filament-phone-input": "3.1.8",
+        "ysfkaya/filament-phone-input": "3.1.9",
         "z3d0x/filament-logger": "^0.8"
     },
     "require-dev": {
