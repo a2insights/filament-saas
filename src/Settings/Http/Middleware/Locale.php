@@ -13,7 +13,7 @@ class Locale
 {
     public function handle(Request $request, Closure $next): Response
     {
-        $userSettings = Cache::rememberForever('filament-saas.user-settings', fn () => $request->user()?->settings);
+        $userSettings = Cache::rememberForever('filament-saas.user-settings' . $request->user()?->id, fn () => $request->user()?->settings);
 
         $settings = Cache::remember('filament-saas.settings', now()->addHours(10), fn () => app(\A2Insights\FilamentSaas\Settings\Settings::class));
 
