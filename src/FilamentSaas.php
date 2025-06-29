@@ -14,6 +14,11 @@ class FilamentSaas
         return config('filament-saas.companies.model', 'App\\Models\\Company');
     }
 
+    public static function getTeamModel(): string
+    {
+        return config('filament-saas.team_model', 'App\\Models\\Company');
+    }
+
     public static function getPrivacyPolicyRoute(): string
     {
         return config('filament-saas.privacy_policy_url', 'privacy-policy');
