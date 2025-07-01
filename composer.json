@@ -58,7 +58,7 @@
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^3.5",
         "lorisleiva/laravel-actions": "^2.8",
-        "malzariey/filament-daterangepicker-filter": "^3.1",
+        "malzariey/filament-daterangepicker-filter": "^4.0",
         "marjose123/filament-webhook-server": "^2.1.6",
         "opcodesio/log-viewer": "^3.10",
         "pxlrbt/filament-environment-indicator": "^2.0",
