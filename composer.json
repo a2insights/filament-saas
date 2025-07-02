@@ -62,7 +62,7 @@
         "marjose123/filament-webhook-server": "^2.1.6",
         "opcodesio/log-viewer": "^3.10",
         "pxlrbt/filament-environment-indicator": "^2.0",
-        "pxlrbt/filament-spotlight": "^1.2",
+        "pxlrbt/filament-spotlight": "^2.0",
         "ralphjsmit/laravel-seo": "^1.6",
         "solution-forest/filament-field-group": "^1.0",
         "solution-forest/filament-firewall": "^2.0",
