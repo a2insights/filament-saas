@@ -28,7 +28,7 @@
         "awcodes/filament-quick-create": "^3.6",
         "awcodes/palette": "^1.0",
         "aymanalhattami/filament-slim-scrollbar": "^2.0",
-        "bezhansalleh/filament-exceptions": "2.1.2",
+        "bezhansalleh/filament-exceptions": "3.0.0",
         "bezhansalleh/filament-panel-switch": "^1.0",
         "bezhansalleh/filament-shield": "^3.3",
         "blade-ui-kit/blade-heroicons": "^2.1",
