@@ -42,7 +42,7 @@ class FilamentSaasServiceProvider extends PackageServiceProvider
         $this->app->register(MarkdownServiceProvider::class);
 
         FilamentAsset::register([
-            Css::make('filament-banner', base_path('vendor/kenepa/banner/resources/dist/banner.css')),
+           // Css::make('filament-banner', base_path('vendor/kenepa/banner/resources/dist/banner.css')),
         ]);
     }
 
