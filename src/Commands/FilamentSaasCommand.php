@@ -4,146 +4,84 @@ namespace A2Insights\FilamentSaas\Commands;
 
 use A2Insights\FilamentSaas\FilamentSaas;
 use BezhanSalleh\FilamentShield\Support\Utils;
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Process;
+use LaravelZero\Framework\Commands\Command;
 
 class FilamentSaasCommand extends Command
 {
     protected $signature = 'filament-saas:install';
 
-    protected $description = 'Install aplication';
+    protected $description = 'Instala o Filament SaaS com menus interativos';
 
-    public const DEFAULT_USER_NAME = 'user';
-
-    public const DEFAULT_USER_EMAIL = 'user@filament-saas.dev';
-
-    public const DEFAULT_USER_PASSWORD = '123456';
-
-    public const DEFAULT_ADMIN_NAME = 'admin';
-
-    public const DEFAULT_ADMIN_EMAIL = 'admin@filament-saas.dev';
-
-    public const DEFAULT_ADMIN_PASSWORD = '123456';
-
-    public const DEFAULT_SUPER_ADMIN_NAME = 'super_admin';
-
-    public const DEFAULT_SUPER_ADMIN_EMAIL = 'super_admin@filament-saas.dev';
-
-    public const DEFAULT_SUPER_ADMIN_PASSWORD = '123456';
-
-    public function handle()
+    public function handle(): void
     {
-        $this->info('Optimizing');
+        $this->info('🚀 Iniciando instalação...');
+
+        $enableTeams = $this->menu('Deseja ativar o recurso de Times?', [
+            'yes' => 'Sim, quero usar times',
+            'no' => 'Não, sem times',
+        ])->setForegroundColour('green')
+            ->setBackgroundColour('black')
+            ->open();
+
+        $useTeam = $enableTeams === 'yes';
+        $team = null;
+
+        if ($useTeam) {
+            $teamName = $this->ask('Digite o nome do time', 'Time Principal');
+            $team = FilamentSaas::getTeamModel()::create(['name' => $teamName]);
+            $this->info("✅ Time {$team->name} criado!");
+        }
+
+        // Executa migrações e setup
         $this->call('optimize');
-
-        Config::set('app.timezone', 'America/Sao_Paulo');
-        date_default_timezone_set('America/Sao_Paulo');
-
         $this->call('migrate:fresh', ['--force' => true]);
-
-        $this->info('Installing Shield');
-
         $this->call('shield:setup');
-
         $this->call('shield:install', ['panel' => 'admin']);
         $this->call('shield:install', ['panel' => 'sysadmin']);
-
         $this->call('shield:generate', ['--all' => true, '--panel' => 'admin']);
         $this->call('shield:generate', ['--all' => true, '--panel' => 'sysadmin']);
 
-        $this->call('filament:assets');
-        $this->call('vendor:publish', ['--tag' => 'themes-assets', '--force' => true]);
-        $this->call('vendor:publish', ['--tag' => 'log-viewer-assets', '--force' => true]);
-        $this->call('vendor:publish', ['--tag' => 'filament-phone-input-assets', '--force' => true]);
-        $this->call('vendor:publish', ['--tag' => 'filament-saas-assets-avatars', '--force' => true]);
+        // Criar usuários com menu
+        $this->createUserWithMenu('super_admin', $team);
+        $this->createUserWithMenu('admin', $team);
+        $this->createUserWithMenu('user', $team);
 
-        $this->info('Creating super admin account');
-        $superAdmin = $this->setUpSuperAdminAccount();
-
-        $this->info('Creating admin account');
-        $admin = $this->setUpAdminAccount();
-
-        $this->info('Creating user account');
-        $user = $this->setUpUserAccount();
-
-        $this->info('Installing LogViewer');
-        $this->call('log-viewer:publish');
-
-        $this->info('Seeding');
         $this->call('db:seed');
-
-        Process::run('./vendor/bin/pint');
+        $this->info('🎉 Instalação finalizada com sucesso!');
     }
 
-    private function setUpSuperAdminAccount()
+    private function createUserWithMenu(string $role, $team = null)
     {
+        $this->info("👤 Criando usuário para: {$role}");
+
+        $name = $this->ask("Nome para {$role}", ucfirst($role));
+        $email = $this->ask("Email para {$role}", "{$role}@filament-saas.dev");
+        $password = $this->secret("Senha para {$role}") ?: '123456';
+
         $user = FilamentSaas::getUserModel()::forceCreate([
-            'name' => self::DEFAULT_SUPER_ADMIN_NAME,
-            'email' => self::DEFAULT_SUPER_ADMIN_EMAIL,
-            'password' => Hash::make(self::DEFAULT_SUPER_ADMIN_PASSWORD),
+            'name' => $name,
+            'email' => $email,
+            'password' => Hash::make($password),
+            'team_id' => $team?->id,
         ]);
 
         $user->markEmailAsVerified();
 
-        $superAdminRole = Utils::getRoleModel()::firstOrCreate(
-            ['name' => Utils::getSuperAdminName()],
+        $roleName = match ($role) {
+            'super_admin' => Utils::getSuperAdminName(),
+            'admin' => 'admin',
+            default => Utils::getPanelUserRoleName()
+        };
+
+        $roleModel = Utils::getRoleModel()::firstOrCreate(
+            ['name' => $roleName],
             ['guard_name' => Utils::getFilamentAuthGuard()]
         );
 
-        $user->assignRole(Utils::getSuperAdminName());
+        $roleModel->syncPermissions([]);
+        $user->assignRole($roleName);
 
-        $this->comment(sprintf('Log in user with email %s and password %s', self::DEFAULT_SUPER_ADMIN_EMAIL, self::DEFAULT_SUPER_ADMIN_PASSWORD));
-
-        return $user;
-    }
-
-    private function setUpAdminAccount()
-    {
-        $user = FilamentSaas::getUserModel()::forceCreate([
-            'name' => self::DEFAULT_ADMIN_NAME,
-            'email' => self::DEFAULT_ADMIN_EMAIL,
-            'password' => Hash::make(self::DEFAULT_ADMIN_PASSWORD),
-        ]);
-
-        $user->markEmailAsVerified();
-
-        $adminRole = Utils::getRoleModel()::firstOrCreate(
-            ['name' => 'admin'],
-            ['guard_name' => Utils::getFilamentAuthGuard()]
-        );
-
-        $adminRole->syncPermissions([]);
-
-        $user->assignRole('admin');
-
-        $this->comment(sprintf('Log in user with email %s and password %s', self::DEFAULT_ADMIN_EMAIL, self::DEFAULT_ADMIN_PASSWORD));
-
-        return $user;
-    }
-
-    private function setUpUserAccount()
-    {
-        $user = FilamentSaas::getUserModel()::forceCreate([
-            'name' => self::DEFAULT_USER_NAME,
-            'email' => self::DEFAULT_USER_EMAIL,
-            'password' => Hash::make(self::DEFAULT_USER_PASSWORD),
-        ]);
-
-        $user->markEmailAsVerified();
-
-        $userRole = Utils::getRoleModel()::firstOrCreate(
-            ['name' => Utils::getPanelUserRoleName()],
-            ['guard_name' => Utils::getFilamentAuthGuard()]
-        );
-
-        $userRole->syncPermissions([]);
-
-        $user->assignRole(Utils::getPanelUserRoleName());
-
-        $this->comment(sprintf('Log in user with email %s and password %s', self::DEFAULT_USER_EMAIL, self::DEFAULT_USER_PASSWORD));
-
-        return $user;
+        $this->info("✅ {$role} criado: {$email} | senha: {$password}");
     }
 }
