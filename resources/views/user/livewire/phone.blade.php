@@ -1,7 +1,15 @@
-<x-filament::section :aside="true" md=2 :heading="{{ __('filament-saas::default.users.profile.username.title') }}"
-    :description="{{ __('filament-saas::default.users.profile.phone.description') }}">
-    <x-filament::card>
-        <form wire:submit.prevent="submit" class="space-y-6">
+
+<x-filament-companies::grid-section md="2">
+    <x-slot name="title">
+        {{ __('filament-saas::default.users.profile.phone.title') }}
+    </x-slot>
+
+    <x-slot name="description">
+        {{ __('filament-saas::default.users.profile.phone.description') }}
+    </x-slot>
+
+    <x-filament::section>
+         <form wire:submit.prevent="submit" class="space-y-6">
 
             {{ $this->form }}
 
@@ -11,5 +19,5 @@
                 </x-filament::button>
             </div>
         </form>
-    </x-filament::card>
-</x-filament::section>
+    </x-filament::section>
+</x-filament-companies::grid-section>

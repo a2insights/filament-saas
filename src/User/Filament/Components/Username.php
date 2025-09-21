@@ -4,10 +4,9 @@ namespace A2Insights\FilamentSaas\User\Filament\Components;
 
 use A2Insights\FilamentSaas\Features\Features;
 use A2Insights\FilamentSaas\FilamentSaas;
-use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Notifications\Notification;
+use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\App;
 use Jeffgreco13\FilamentBreezy\Livewire\MyProfileComponent;
 
@@ -27,17 +26,20 @@ class Username extends MyProfileComponent
         $this->form->fill($this->user->only(['username']));
     }
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 TextInput::make('username')
                     ->label(__('filament-saas::default.users.profile.username.title'))
                     ->prefixIcon('heroicon-m-at-symbol')
                     ->unique(FilamentSaas::getUserModel(), ignorable: $this->user)
                     ->required()
                     ->rules(['required', 'max:100', 'min:4', 'string']),
-            ])->statePath('data');
+            ])
+            ->model($this->getFormModel())
+            ->statePath('data')
+            ->operation($this->getFormContext());
     }
 
     public static function canView(): bool
