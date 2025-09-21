@@ -1,5 +1,5 @@
-<x-filament-breezy::grid-section md=2 title="{{ __('filament-saas::default.users.profile.username.title') }}"
-    description="{{ __('filament-saas::default.users.profile.phone.description') }}">
+<x-filament::section :aside="true" md=2 :heading="{{ __('filament-saas::default.users.profile.username.title') }}"
+    :description="{{ __('filament-saas::default.users.profile.phone.description') }}">
     <x-filament::card>
         <form wire:submit.prevent="submit" class="space-y-6">
 
@@ -12,4 +12,4 @@
             </div>
         </form>
     </x-filament::card>
-</x-filament-breezy::grid-section>
+</x-filament::section>

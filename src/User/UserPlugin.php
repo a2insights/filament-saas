@@ -3,7 +3,7 @@
 namespace A2Insights\FilamentSaas\User;
 
 use A2Insights\FilamentSaas\User\Filament\UserResource;
-use BezhanSalleh\FilamentShield\Resources\RoleResource\Pages\ListRoles;
+use BezhanSalleh\FilamentShield\Resources\Roles\Pages\ListRoles;
 use Filament\Contracts\Plugin;
 use Filament\FilamentManager;
 use Filament\Navigation\NavigationItem;
@@ -27,7 +27,7 @@ class UserPlugin implements Plugin
      * Class MyClass overrides inline block form.
      *
      * @phpstan-ignore-next-line */
-    public static function get(): Plugin | FilamentManager
+    public static function get(): Plugin|FilamentManager
     {
         return filament(app(static::class)->getId());
     }

@@ -8,25 +8,27 @@ use A2Insights\FilamentSaas\Settings\Settings;
 use A2Insights\FilamentSaas\Settings\SitemapSettings;
 use A2Insights\FilamentSaas\Settings\TermsSettings;
 use App\Models\User;
+use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
+use Filament\Forms\Components\CodeEditor;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Group;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Pages\SettingsPage;
+use Filament\Schemas\Components\Group;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Symfony\Component\Intl\Locales;
 use Symfony\Component\Intl\Timezones;
-use Wiebenieuwenhuis\FilamentCodeEditor\Components\CodeEditor;
 
 class MainSettingsPage extends SettingsPage
 {
@@ -34,9 +36,7 @@ class MainSettingsPage extends SettingsPage
 
     protected static string $settings = Settings::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-cog';
-
-    protected static ?string $navigationGroup = 'Settings';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-cog';
 
     protected static ?string $slug = 'settings/main';
 
@@ -67,6 +67,8 @@ class MainSettingsPage extends SettingsPage
 
     protected function mutateFormDataBeforeFill(array $data): array
     {
+        parent::mutateFormDataBeforeFill($data);
+
         $termsSettings = $this->terms();
         $data['terms-service'] = $termsSettings->service;
         $data['terms-privacy_policy'] = $termsSettings->privacy_policy;
@@ -104,6 +106,14 @@ class MainSettingsPage extends SettingsPage
         cache()->forget('filament-saas.features');
         cache()->forget('filament-saas.settings');
         cache()->forget('filament-saas.webhooks');
+    }
+
+    public function defaultForm(Schema $schema): Schema
+    {
+        return $schema
+            ->schema($this->getFormSchema())->disabled(! $this->canEdit())
+            ->inlineLabel($this->hasInlineLabels())
+            ->statePath('data');
     }
 
     protected function getFormSchema(): array
@@ -180,7 +190,7 @@ class MainSettingsPage extends SettingsPage
                         ->image()
                         ->directory('images')
                         ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
-                            return 'logo.' . $file->guessExtension();
+                            return 'logo.'.$file->guessExtension();
                         }),
                     FileUpload::make('og')
                         ->label(__('filament-saas::default.settings.style.og.label'))
@@ -189,7 +199,7 @@ class MainSettingsPage extends SettingsPage
                         ->image()
                         ->directory('images')
                         ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
-                            return 'og.' . $file->guessExtension();
+                            return 'og.'.$file->guessExtension();
                         }),
                     TextInput::make('logo_size')
                         ->label(__('filament-saas::default.settings.style.logo_size.label'))
@@ -201,7 +211,7 @@ class MainSettingsPage extends SettingsPage
                         ->image()
                         ->directory('images')
                         ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
-                            return 'favicon.' . $file->guessExtension();
+                            return 'favicon.'.$file->guessExtension();
                         }),
                 ])
                 ->collapsed()
@@ -224,12 +234,12 @@ class MainSettingsPage extends SettingsPage
                     MarkdownEditor::make('terms-service')
                         ->label(__('filament-saas::default.settings.terms_and_privacy_policy.terms.label'))
                         ->fileAttachmentsDisk(config('filament.default_filesystem_disk'))
-                        ->fileAttachmentsVisibility('public')
+                        // ->fileAttachmentsVisibility('public')
                         ->visible(fn ($state, callable $get) => $get('terms')),
                     MarkdownEditor::make('terms-privacy_policy')
                         ->label(__('filament-saas::default.settings.terms_and_privacy_policy.privacy_policy.label'))
                         ->fileAttachmentsDisk(config('filament.default_filesystem_disk'))
-                        ->fileAttachmentsVisibility('public')
+                        // ->fileAttachmentsVisibility('public')
                         ->visible(fn ($state, callable $get) => $get('terms')),
                 ])
                 ->collapsed()

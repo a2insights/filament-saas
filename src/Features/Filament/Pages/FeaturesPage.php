@@ -5,11 +5,10 @@ namespace A2Insights\FilamentSaas\Features\Filament\Pages;
 use A2Insights\FilamentSaas\Features\Features;
 use A2Insights\FilamentSaas\Settings\reCAPTCHASettings;
 use A2Insights\FilamentSaas\Settings\WhatsappChatSettings;
+use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Pages\SettingsPage;
@@ -17,6 +16,9 @@ use Icetalker\FilamentPicker\Forms\Components\Picker;
 use Illuminate\Support\Facades\App;
 use libphonenumber\PhoneNumberType;
 use Ysfkaya\FilamentPhoneInput\Forms\PhoneInput;
+use Filament\Schemas\Components\Group;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 
 class FeaturesPage extends SettingsPage
 {
@@ -24,7 +26,7 @@ class FeaturesPage extends SettingsPage
 
     protected static string $settings = Features::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-puzzle-piece';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-puzzle-piece';
 
     protected static ?string $slug = 'settings/features';
 
@@ -102,6 +104,14 @@ class FeaturesPage extends SettingsPage
         $data['whatsapp_chat-footer'] = $whatsappChatSettings->footer;
 
         return $data;
+    }
+
+    public function defaultForm(Schema $schema): Schema
+    {
+        return $schema
+            ->schema($this->getFormSchema())->disabled(! $this->canEdit())
+            ->inlineLabel($this->hasInlineLabels())
+            ->statePath('data');
     }
 
     protected function getFormSchema(): array
@@ -224,13 +234,14 @@ class FeaturesPage extends SettingsPage
                                         ->columns(5),
                                 ])
                                 ->columnSpan(6),
-                            Picker::make('avatar.icon')
-                                ->label(__('filament-saas::default.features.whatsapp_chat.attendants.icon.label'))
-                                ->options(fn (): array => collect(array_fill(1, 30, null))->mapWithKeys(fn ($value, $key) => ["/img/avatars/avatar-$key.svg" => ''])->toArray())
-                                ->imageSize(50)
-                                ->images(fn (): array => collect(array_fill(1, 30, null))->mapWithKeys(fn ($value, $key) => ["/img/avatars/avatar-$key.svg" => "/img/avatars/avatar-$key.svg"])
-                                    ->toArray())
-                                ->columnSpanFull(),
+                            // TODO: icetalker/filament-picke
+                            // Picker::make('avatar.icon')
+                            //     ->label(__('filament-saas::default.features.whatsapp_chat.attendants.icon.label'))
+                            //     ->options(fn (): array => collect(array_fill(1, 30, null))->mapWithKeys(fn ($value, $key) => ["/img/avatars/avatar-$key.svg" => ''])->toArray())
+                            //     ->imageSize(50)
+                            //     ->images(fn (): array => collect(array_fill(1, 30, null))->mapWithKeys(fn ($value, $key) => ["/img/avatars/avatar-$key.svg" => "/img/avatars/avatar-$key.svg"])
+                            //         ->toArray())
+                            //     ->columnSpanFull(),
                         ])
                         ->visible(fn ($state, callable $get) => $get('whatsapp_chat'))
                         ->collapsed()

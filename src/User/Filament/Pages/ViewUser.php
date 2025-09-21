@@ -12,11 +12,9 @@ class ViewUser extends ViewRecord
 
     protected function getActions(): array
     {
-        return collect([
+        return [
             Actions\DeleteAction::make()->disabled(fn () => $this->record->is(auth()->user()) || $this->record->hasRole('super_admin')),
-        ])->when(
-            auth()->user()->hasRole('super_admin') && ! $this->record->hasRole('super_admin'),
-            fn ($actions) => $actions->push(\XliteDev\FilamentImpersonate\Pages\Actions\ImpersonateAction::make()->record($this->getRecord()))
-        )->toArray();
+            Actions\EditAction::make()->disabled(fn () => $this->record->is(auth()->user())),
+        ];
     }
 }

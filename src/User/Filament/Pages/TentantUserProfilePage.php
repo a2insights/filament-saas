@@ -9,5 +9,5 @@ use Jeffgreco13\FilamentBreezy\Pages\MyProfilePage;
  */
 class TentantUserProfilePage extends MyProfilePage
 {
-    protected static string $view = 'filament-saas::pages.tenant-user-profile';
+    protected string $view = 'filament-saas::pages.tenant-user-profile';
 }

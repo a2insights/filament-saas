@@ -40,10 +40,6 @@ class FilamentSaasServiceProvider extends PackageServiceProvider
         $this->app->register(TenantServiceProvider::class);
         $this->app->register(WebhookServiceProvider::class);
         $this->app->register(MarkdownServiceProvider::class);
-
-        FilamentAsset::register([
-            Css::make('filament-banner', base_path('vendor/kenepa/banner/resources/dist/banner.css')),
-        ]);
     }
 
     public function configurePackage(Package $package): void
@@ -100,14 +96,14 @@ class FilamentSaasServiceProvider extends PackageServiceProvider
 
         // Handle Stubs
         if (app()->runningInConsole()) {
-            foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
+            foreach (app(Filesystem::class)->files(__DIR__.'/../stubs/') as $file) {
                 $this->publishes([
                     $file->getRealPath() => base_path("stubs/filament-saas/{$file->getFilename()}"),
                 ], 'filament-saas-stubs');
             }
 
             $this->publishes([
-                __DIR__ . '/../resources/assets/avatars' => public_path('img/avatars'),
+                __DIR__.'/../resources/assets/avatars' => public_path('img/avatars'),
             ], 'filament-saas-assets-avatars');
         }
 

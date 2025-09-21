@@ -18,9 +18,10 @@ class UserServiceProvider extends PackageServiceProvider
     {
         $this->registerLivewireComponents();
 
-        Route::get('banned/user', BannedUser::class)
-            ->middleware('web')
-            ->name('banned.user');
+        // TODO: BannedUser needs to be upgraded
+        // Route::get('banned/user', BannedUser::class)
+        //     ->middleware('web')
+        //     ->name('banned.user');
 
         // Fix recaptcha style
         // TODO: Implement Recaptcha style fix
@@ -37,7 +38,8 @@ class UserServiceProvider extends PackageServiceProvider
 
     public function registerLivewireComponents(): void
     {
-        Livewire::component('BannedUser', BannedUser::class);
+        // TODO: BannedUser needs to be upgraded
+        // Livewire::component('BannedUser', BannedUser::class);
         Livewire::component('Register', Register::class);
         Livewire::component('phone', Phone::class);
         Livewire::component('username', Username::class);

@@ -1,4 +1,4 @@
-<x-filament::dropdown placement="bottom-end">
+<x-filament::dropdown placement="bottom-end" teleport>
     <x-slot name="trigger" @class([
         'ml-4' => __('filament::layout.direction') === 'ltr',
         'mr-4' => __('filament::layout.direction') === 'rtl',
