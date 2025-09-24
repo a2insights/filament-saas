@@ -11,7 +11,7 @@ class FilamentSaas
 
     public static function getCompanyModel(): string
     {
-        return config('filament-saas.companies.model', 'App\\Models\\Company');
+        return config('filament-saas.company.model', 'App\\Models\\Company');
     }
 
     public static function getPrivacyPolicyRoute(): string
