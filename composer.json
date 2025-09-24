@@ -62,10 +62,10 @@
         "spatie/laravel-package-tools": "^1.92",
         "spatie/laravel-sitemap": "^7.2",
         "spatie/laravel-stats": "^2.1",
-        "stancl/tenancy": "^3.8",
         "symfony/intl": "^7.2",
         "taylornetwork/laravel-username-generator": "^2.8",
-        "ysfkaya/filament-phone-input": "4.0"
+        "ysfkaya/filament-phone-input": "4.0",
+        "stancl/tenancy": "dev-master"
     },
     "require-dev": {
         "laravel/pint": "^1.24",
