@@ -2,18 +2,17 @@
 
 namespace A2Insights\FilamentSaas\User\Filament;
 
+use A2Insights\FilamentSaas\FilamentSaas;
 use A2Insights\FilamentSaas\User\Filament\Forms\UserForm;
 use A2Insights\FilamentSaas\User\Filament\Pages\CreateUser;
 use A2Insights\FilamentSaas\User\Filament\Pages\EditUser;
 use A2Insights\FilamentSaas\User\Filament\Pages\ListUsers;
 use A2Insights\FilamentSaas\User\Filament\Pages\ViewUser;
-use App\Models\User;
 use BackedEnum;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteAction;
 use Filament\Actions\RestoreAction;
-use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables;
@@ -21,18 +20,20 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 
 class UserResource extends Resource
 {
-    protected static ?string $model = User::class;
-
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-users';
 
     protected static ?int $navigationSort = -2;
+
+    public static function getModel(): string
+    {
+        return FilamentSaas::getUserModel();
+    }
 
     public static function getNavigationGroup(): ?string
     {
