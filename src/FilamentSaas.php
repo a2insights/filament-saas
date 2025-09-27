@@ -16,11 +16,11 @@ class FilamentSaas
 
     public static function getPrivacyPolicyRoute(): string
     {
-        return config('filament-saas.privacy_policy_url', 'privacy-policy');
+        return config('filament-saas.privacy_policy_path', 'privacy-policy');
     }
 
     public static function getTermsOfServiceRoute(): string
     {
-        return config('filament-saas.terms_of_service_url', 'terms-of-service');
+        return config('filament-saas.terms_of_service_path', 'terms-of-service');
     }
 }
