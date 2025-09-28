@@ -12,7 +12,7 @@ use Jeffgreco13\FilamentBreezy\Livewire\MyProfileComponent;
 
 class Username extends MyProfileComponent
 {
-    protected string $view = 'filament-saas::user.livewire.phone';
+    protected string $view = 'filament-saas::user.livewire.username';
 
     public static $sort = 10;
 

@@ -40,7 +40,7 @@ class UserPlugin implements Plugin
 
         $panel->navigationItems([
             NavigationItem::make('roles')
-                ->hidden(fn () => ! Auth::user()?->hasRole('super_admin') || $panel->getId() !== 'sysadmin')
+                ->hidden(fn () => ! Auth::user()?->hasPermissionTo('ViewAny:Role'))
                 ->label(fn (): string => trans_choice('filament-saas::default.users.navigation.role', 2))
                 ->url($panel->getId() === 'sysadmin' ? ListRoles::getUrl() : '#')
                 ->isActiveWhen(fn () => request()->fullUrlIs(ListRoles::getUrl()))
