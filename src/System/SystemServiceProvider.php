@@ -3,7 +3,6 @@
 namespace A2Insights\FilamentSaas\System;
 
 use Illuminate\Support\Facades\App;
-use Opcodes\LogViewer\Facades\LogViewer;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -23,7 +22,5 @@ class SystemServiceProvider extends PackageServiceProvider
         if (App::runningInConsole()) {
             return;
         }
-
-        LogViewer::auth(fn ($request) => $request->user()?->hasRole('super_admin'));
     }
 }

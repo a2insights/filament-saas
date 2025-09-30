@@ -37,16 +37,6 @@ class UserPlugin implements Plugin
         if (App::runningInConsole()) {
             return;
         }
-
-        $panel->navigationItems([
-            NavigationItem::make('roles')
-                ->hidden(fn () => ! Auth::user()?->hasPermissionTo('ViewAny:Role'))
-                ->label(fn (): string => trans_choice('filament-saas::default.users.navigation.role', 2))
-                ->url($panel->getId() === 'sysadmin' ? ListRoles::getUrl() : '#')
-                ->isActiveWhen(fn () => request()->fullUrlIs(ListRoles::getUrl()))
-                ->icon('heroicon-o-shield-check')
-                ->group(fn (): string => trans_choice('filament-saas::default.users.navigation.group', 2)),
-        ]);
     }
 
     public function register(Panel $panel): void
