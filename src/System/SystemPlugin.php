@@ -37,14 +37,6 @@ class SystemPlugin implements Plugin
         if (App::runningInConsole()) {
             return;
         }
-
-        $panel->navigationItems([
-            NavigationItem::make('Logs')
-                ->url(config('log-viewer.route_path'))
-                ->hidden(fn () => ! Auth::user()?->hasRole('super_admin'))
-                ->icon('iconpark-log')
-                ->group('System'),
-        ]);
     }
 
     public function register(Panel $panel): void {}
