@@ -7,6 +7,7 @@ use A2Insights\FilamentSaas\FilamentSaas;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Schema;
+use Filament\Facades\Filament;
 use Illuminate\Support\Facades\App;
 use Jeffgreco13\FilamentBreezy\Livewire\MyProfileComponent;
 
