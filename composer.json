@@ -65,7 +65,6 @@
         "symfony/intl": "^7.2",
         "taylornetwork/laravel-username-generator": "^2.8",
         "ysfkaya/filament-phone-input": "4.0",
-        "stancl/tenancy": "dev-master",
         "secondnetwork/blade-tabler-icons": "^3.35",
         "davidhsianturi/blade-bootstrap-icons": "^2.1"
     },
