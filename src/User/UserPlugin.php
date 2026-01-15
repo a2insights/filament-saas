@@ -3,13 +3,10 @@
 namespace A2Insights\FilamentSaas\User;
 
 use A2Insights\FilamentSaas\User\Filament\UserResource;
-use BezhanSalleh\FilamentShield\Resources\Roles\Pages\ListRoles;
 use Filament\Contracts\Plugin;
 use Filament\FilamentManager;
-use Filament\Navigation\NavigationItem;
 use Filament\Panel;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
 
 class UserPlugin implements Plugin
 {
@@ -27,7 +24,7 @@ class UserPlugin implements Plugin
      * Class MyClass overrides inline block form.
      *
      * @phpstan-ignore-next-line */
-    public static function get(): Plugin|FilamentManager
+    public static function get(): Plugin | FilamentManager
     {
         return filament(app(static::class)->getId());
     }
@@ -42,7 +39,7 @@ class UserPlugin implements Plugin
     public function register(Panel $panel): void
     {
         $panel->resources([
-            config('filament-saas.users.resource', UserResource::class),
+            config('filament-saas.user.resource', UserResource::class),
         ]);
     }
 }

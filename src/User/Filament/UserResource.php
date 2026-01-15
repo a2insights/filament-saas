@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-users';
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-users';
 
     protected static ?int $navigationSort = -2;
 
@@ -57,12 +57,12 @@ class UserResource extends Resource
 
     public static function isScopedToTenant(): bool
     {
-        return config('filament-saas.users.tenant_scope', false);
+        return config('filament-saas.user.tenant_scope', false);
     }
 
     public static function getGlobalSearchResultTitle(Model $record): string
     {
-        return $record->name.' - '.$record->email;
+        return $record->name . ' - ' . $record->email;
     }
 
     public static function form(Schema $form): Schema
