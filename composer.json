@@ -39,7 +39,7 @@
         "filament/spatie-laravel-media-library-plugin": "^4.0",
         "filament/spatie-laravel-settings-plugin": "^4.0",
         "filament/tables": "^4.0",
-        "giggsey/libphonenumber-for-php": "9.0.13",
+        "giggsey/libphonenumber-for-php": "9.0.23",
         "illuminate/contracts": "^12.0",
         "illuminate/support": "^12.0",
         "jeffgreco13/filament-breezy": "^3.0",
