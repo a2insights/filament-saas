@@ -64,7 +64,7 @@
         "spatie/laravel-stats": "^2.1",
         "symfony/intl": "^7.2",
         "taylornetwork/laravel-username-generator": "^2.8",
-        "ysfkaya/filament-phone-input": "4.0",
+        "ysfkaya/filament-phone-input": "4.1.0",
         "secondnetwork/blade-tabler-icons": "^3.35",
         "davidhsianturi/blade-bootstrap-icons": "^2.1"
     },
