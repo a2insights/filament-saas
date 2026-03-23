@@ -4,7 +4,16 @@ use A2Insights\FilamentSaas\Settings\Settings;
 use Illuminate\Support\Facades\Route;
 
 Route::get('robots.txt', function () {
-    $robots = app(Settings::class)->robots;
+    $settings = app(Settings::class);
+    $currentDomain = request()->getHost();
+    $allowedDomains = config('filament-saas.robots_allowed_domains', []);
+
+    if (! in_array($currentDomain, $allowedDomains)) {
+        return response("User-agent: *\nDisallow: /", 200)
+            ->header('Content-Type', 'text/plain');
+    }
+
+    $robots = $settings->robots;
 
     if (! empty($robots)) {
         return response($robots, 200)

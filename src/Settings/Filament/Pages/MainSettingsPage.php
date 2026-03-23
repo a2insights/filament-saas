@@ -81,6 +81,8 @@ class MainSettingsPage extends SettingsPage
              $data['robots'] = file_get_contents(public_path('robots.txt'));
         }
 */
+        $data['robots_allowed_domains'] = config('filament-saas.robots_allowed_domains');
+
         return $data;
     }
 
@@ -180,6 +182,10 @@ class MainSettingsPage extends SettingsPage
                     CodeEditor::make('robots')
                         ->required()
                         ->label(__('filament-saas::default.settings.robots.label')),
+                    TagsInput::make('robots_allowed_domains')
+                        ->label(__('filament-saas::default.settings.robots.allowed_domains.label'))
+                        ->helperText(__('filament-saas::default.settings.robots.allowed_domains.helper_text'))
+                        ->disabled(),
                 ])
                 ->collapsed()
                 ->columns(1),

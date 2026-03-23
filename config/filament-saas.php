@@ -13,4 +13,8 @@ return [
 
     'terms_of_service_path' => 'terms-of-service',
     'privacy_policy_path' => 'privacy-policy',
+
+    'robots_allowed_domains' => [
+        'localhost',
+    ],
 ];
