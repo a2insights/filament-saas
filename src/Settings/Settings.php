@@ -23,6 +23,8 @@ class Settings extends BaseSettings
     public ?string $favicon;
 
     public bool $terms;
+    
+    public ?string $robots;
 
     public bool $sitemap;
 

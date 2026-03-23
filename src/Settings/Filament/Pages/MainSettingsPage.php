@@ -76,8 +76,11 @@ class MainSettingsPage extends SettingsPage
         $sitemapSettings = $this->sitemap();
         $data['sitemap-pages'] = $sitemapSettings->pages;
 
-        $data['robots'] = file_get_contents(public_path('robots.txt'));
-
+/*
+        if (file_exists(public_path('robots.default.txt'))) {
+             $data['robots'] = file_get_contents(public_path('robots.txt'));
+        }
+*/
         return $data;
     }
 
@@ -101,7 +104,7 @@ class MainSettingsPage extends SettingsPage
         }
 
         GenerateSitemap::run();
-        UpdateRobots::run($data['robots']);
+        // UpdateRobots::run($data['robots']);
 
         cache()->forget('filament-saas.features');
         cache()->forget('filament-saas.settings');
