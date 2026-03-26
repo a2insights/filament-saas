@@ -73,7 +73,7 @@ class Register extends AuthRegister
             trans(
                 'filament-saas::default.users.register.accept_terms',
                 [
-                    'terms_of_service_path' => FilamentSaas::getTermsOfServiceRoute(),
+                    'terms_of_use_path' => FilamentSaas::getTermsOfServiceRoute(),
                     'privacy_policy_path' => FilamentSaas::getPrivacyPolicyRoute(),
                 ]
             )

@@ -23,13 +23,15 @@ class FeaturesServiceProvider extends PackageServiceProvider
     {
         $package->name('filament-saas.features');
 
-        Route::get(FilamentSaas::getTermsOfServiceRoute(), Terms::class)
-            ->middleware('web')
-            ->name('terms.show');
+        if (FilamentSaas::hasLegalPage()) {
+            Route::get(FilamentSaas::getTermsOfServiceRoute(), Terms::class)
+                ->middleware('web')
+                ->name('terms.show');
 
-        Route::get(FilamentSaas::getPrivacyPolicyRoute(), Policy::class)
-            ->middleware('web')
-            ->name('policy.show');
+            Route::get(FilamentSaas::getPrivacyPolicyRoute(), Policy::class)
+                ->middleware('web')
+                ->name('policy.show');
+        }
     }
 
     public function packageBooted(): void

@@ -3,7 +3,7 @@
 return [
     'users' => [
         'register' => [
-            'accept_terms' => 'I accept the <a href=":terms_of_service_path" class="underline">Terms of Service</a> and <a href=":privacy_policy_path" class="underline">Privacy Policy</a>',
+            'accept_terms' => 'I accept the <a href=":terms_of_use_path" class="underline">Terms of Service</a> and <a href=":privacy_policy_path" class="underline">Privacy Policy</a>',
             'phone' => 'Phone',
         ],
         'profile' => [
@@ -205,7 +205,7 @@ return [
         'title' => 'Privacy Policy',
     ],
 
-    'terms-of-service' => [
+    'terms-of-use' => [
         'title' => 'Terms of Service',
     ],
 ];

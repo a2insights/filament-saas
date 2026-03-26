@@ -12,15 +12,15 @@ use Illuminate\Support\Str;
 
 class Terms extends BasePage
 {
-    protected Width|string|null $maxContentWidth = 'full';
+    protected Width | string | null $maxContentWidth = 'full';
 
-    protected string $view = 'filament-saas::features.terms-of-service';
+    protected string $view = 'filament-saas::features.terms-of-use';
 
     public string $termsOfService;
 
-    public function getTitle(): string|Htmlable
+    public function getTitle(): string | Htmlable
     {
-        return __('filament-saas::default.terms-of-service.title');
+        return __('filament-saas::default.terms-of-use.title');
     }
 
     public function mount()

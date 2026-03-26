@@ -14,6 +14,11 @@ class FilamentSaas
         return config('filament-saas.company.model', 'App\\Models\\Company');
     }
 
+    public static function hasLegalPage(): bool
+    {
+        return config('filament-saas.legal_pages', false);
+    }
+
     public static function getPrivacyPolicyRoute(): string
     {
         return config('filament-saas.privacy_policy_path', 'privacy-policy');
@@ -21,6 +26,6 @@ class FilamentSaas
 
     public static function getTermsOfServiceRoute(): string
     {
-        return config('filament-saas.terms_of_service_path', 'terms-of-service');
+        return config('filament-saas.terms_of_use_path', 'terms-of-use');
     }
 }
