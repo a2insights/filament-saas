@@ -2,12 +2,12 @@
 
 namespace A2Insights\FilamentSaas\Settings\Filament\Pages;
 
+use A2Insights\FilamentSaas\FilamentSaas;
 use A2Insights\FilamentSaas\Settings\Actions\GenerateSitemap;
 use A2Insights\FilamentSaas\Settings\Actions\UpdateRobots;
 use A2Insights\FilamentSaas\Settings\Settings;
 use A2Insights\FilamentSaas\Settings\SitemapSettings;
 use A2Insights\FilamentSaas\Settings\TermsSettings;
-use App\Models\User;
 use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use Filament\Forms\Components\CodeEditor;
@@ -36,7 +36,7 @@ class MainSettingsPage extends SettingsPage
 
     protected static string $settings = Settings::class;
 
-    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-cog';
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-cog';
 
     protected static ?string $slug = 'settings/main';
 
@@ -76,11 +76,6 @@ class MainSettingsPage extends SettingsPage
         $sitemapSettings = $this->sitemap();
         $data['sitemap-pages'] = $sitemapSettings->pages;
 
-/*
-        if (file_exists(public_path('robots.default.txt'))) {
-             $data['robots'] = file_get_contents(public_path('robots.txt'));
-        }
-*/
         $data['robots_allowed_domains'] = config('filament-saas.robots_allowed_domains');
 
         return $data;
@@ -199,7 +194,7 @@ class MainSettingsPage extends SettingsPage
                         ->image()
                         ->directory('images')
                         ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
-                            return 'logo.'.$file->guessExtension();
+                            return 'logo.' . $file->guessExtension();
                         }),
                     FileUpload::make('og')
                         ->label(__('filament-saas::default.settings.style.og.label'))
@@ -208,7 +203,7 @@ class MainSettingsPage extends SettingsPage
                         ->image()
                         ->directory('images')
                         ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
-                            return 'og.'.$file->guessExtension();
+                            return 'og.' . $file->guessExtension();
                         }),
                     TextInput::make('logo_size')
                         ->label(__('filament-saas::default.settings.style.logo_size.label'))
@@ -220,7 +215,7 @@ class MainSettingsPage extends SettingsPage
                         ->image()
                         ->directory('images')
                         ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
-                            return 'favicon.'.$file->guessExtension();
+                            return 'favicon.' . $file->guessExtension();
                         }),
                 ])
                 ->collapsed()
@@ -267,9 +262,9 @@ class MainSettingsPage extends SettingsPage
                         ->helperText(__('filament-saas::default.settings.security.restrict_users.help_text'))
                         ->multiple()
                         ->searchable()
-                        ->options(fn () => User::all()->pluck('name', 'id'))
-                        ->getSearchResultsUsing(fn (string $search) => User::where('name', 'like', "%{$search}%")->limit(10)->pluck('name', 'id'))
-                        ->getOptionLabelUsing(fn ($value): ?string => User::find($value)?->name),
+                        ->options(fn () => FilamentSaas::getUserModel()::all()->pluck('name', 'id'))
+                        ->getSearchResultsUsing(fn (string $search) => FilamentSaas::getUserModel()::where('name', 'like', "%{$search}%")->limit(10)->pluck('name', 'id'))
+                        ->getOptionLabelUsing(fn ($value): ?string => FilamentSaas::getUserModel()::find($value)?->name),
                 ])
                 ->collapsed()
                 ->columns(1),
