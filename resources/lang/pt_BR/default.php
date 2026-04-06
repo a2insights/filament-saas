@@ -139,6 +139,10 @@ return [
             'title' => 'Robots',
             'subtitle' => 'Configure o robots do site.',
             'label' => 'Robots',
+            'allowed_domains' => [
+                'label' => 'Domínios Permitidos',
+                'helper_text' => 'Estes domínios podem ser indexados por robôs de busca.',
+            ],
         ],
         'style' => [
             'title' => 'Estilo',

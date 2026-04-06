@@ -6,9 +6,9 @@ use Spatie\LaravelSettings\Settings as BaseSettings;
 
 class Settings extends BaseSettings
 {
-    public string $name;
+    public ?string $name;
 
-    public string $description;
+    public ?string $description;
 
     public array $keywords;
 
@@ -32,9 +32,8 @@ class Settings extends BaseSettings
 
     public array $restrict_users;
 
-    public string $timezone;
-
-    public string $locale;
+    public ?string $timezone;
+    public ?string $locale;
 
     public array $locales;
 
