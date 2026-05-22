@@ -22,8 +22,8 @@
     ],
     "repositories": [
         {
-            "type": "path",
-            "url": "../filament-companies"
+            "type": "vcs",
+            "url": "https://github.com/laravel-shift/filament-companies.git"
         },
         {
             "type": "vcs",
