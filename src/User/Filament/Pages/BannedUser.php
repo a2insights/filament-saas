@@ -7,6 +7,7 @@ use Filament\Actions\Action;
 use Filament\Facades\Filament;
 use Filament\Pages\BasePage;
 use Filament\Pages\Concerns\InteractsWithFormActions;
+use Filament\Support\Enums\Width;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +22,7 @@ class BannedUser extends BasePage
 
     protected ?string $heading = '';
 
-    protected static string $view = 'filament-saas::user.banned';
+    protected string $view = 'filament-saas::user.banned';
 
     public Ban $ban;
 
