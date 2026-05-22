@@ -10,9 +10,9 @@ class UsersChart extends LineChartWidget
 {
     use HasWidgetShield;
 
-    protected static ?string $heading = 'Users Chart';
+    protected ?string $heading = 'Users Chart';
 
-    protected static ?string $maxHeight = '250px';
+    protected ?string $maxHeight = '250px';
 
     protected function getData(): array
     {
