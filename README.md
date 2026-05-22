@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/a2insights/filament-saas.svg?style=flat-square)](https://packagist.org/packages/a2insights/filament-saas)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/a2insights/filament-saas/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/a2insights/filament-saas/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![Coverage](https://img.shields.io/codecov/c/github/nfse-nacional/nfse-php/main?style=flat-square)](https://codecov.io/gh/nfse-nacional/nfse-php)
+[![Coverage](https://img.shields.io/codecov/c/github/a2insights/filament-saas/main?style=flat-square)](https://codecov.io/gh/a2insights/filament-saas)
 [![Total Downloads](https://img.shields.io/packagist/dt/a2insights/filament-saas.svg?style=flat-square)](https://packagist.org/packages/a2insights/filament-saas)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
