@@ -7,6 +7,7 @@ use Filament\Actions\Action;
 use Filament\Facades\Filament;
 use Filament\Pages\BasePage;
 use Filament\Pages\Concerns\InteractsWithFormActions;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Facades\Auth;
 
 // TODO: BannedUser needs to be upgraded
@@ -16,7 +17,7 @@ class BannedUser extends BasePage
 
     protected static ?string $title = null;
 
-    protected Width|string|null $maxContentWidth = null;
+    protected Width | string | null $maxContentWidth = null;
 
     protected ?string $heading = '';
 
@@ -33,7 +34,7 @@ class BannedUser extends BasePage
         $this->ban = Auth::user()->bans->first();
     }
 
-    public function getTitle(): \Illuminate\Contracts\Support\Htmlable|string
+    public function getTitle(): Htmlable | string
     {
         return static::$title ?? (string) str(__('filament-lockscreen::default.heading'))
             ->kebab()

@@ -30,7 +30,7 @@ class FeaturesPlugin implements Plugin
     /**
      * Class MyClass overrides inline block form.
      */
-    public static function get(): Plugin|FilamentManager
+    public static function get(): Plugin | FilamentManager
     {
         return filament(App::make(static::class)->getId());
     }

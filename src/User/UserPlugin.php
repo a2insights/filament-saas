@@ -7,6 +7,7 @@ use Filament\Contracts\Plugin;
 use Filament\FilamentManager;
 use Filament\Panel;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class UserPlugin implements Plugin
 {
@@ -38,7 +39,16 @@ class UserPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $panel->resources([
+        $panel->topNavigation(function () {
+            $user = Auth::user();
+            $layout = $user?->preferences?->navigation_layout;
+
+            if ($layout) {
+                return $layout === 'top';
+            }
+
+            return false;
+        })->resources([
             config('filament-saas.user.resource', UserResource::class),
         ]);
     }

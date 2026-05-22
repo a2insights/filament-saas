@@ -21,7 +21,7 @@ class Language
         if (auth()->check() && method_exists(auth()->user(), 'getLocale')) {
             return auth()->user()->getLocale();
         }
-        
+
         return auth()->user()->locale ?? null;
     }
 

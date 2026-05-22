@@ -4,10 +4,10 @@ namespace A2Insights\FilamentSaas\User\Filament\Components;
 
 use A2Insights\FilamentSaas\Features\Features;
 use A2Insights\FilamentSaas\FilamentSaas;
+use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Schema;
-use Filament\Facades\Filament;
 use Illuminate\Support\Facades\App;
 use Jeffgreco13\FilamentBreezy\Livewire\MyProfileComponent;
 

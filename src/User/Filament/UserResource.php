@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
+use Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter;
 
 class UserResource extends Resource
 {
@@ -113,7 +114,7 @@ class UserResource extends Resource
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
-                \Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter::make('created_at'),
+                DateRangeFilter::make('created_at'),
                 Tables\Filters\Filter::make('email_verified_at')->label('Not verified')->query(fn (Builder $query) => $query->whereNull('email_verified_at')),
             ])
             ->actions([

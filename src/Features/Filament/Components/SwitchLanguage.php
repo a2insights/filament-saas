@@ -30,7 +30,7 @@ class SwitchLanguage extends Component
 
         $user->settings = $settings;
 
-        $key = 'filament-saas.user-settings|'.$user->id;
+        $key = 'filament-saas.user-settings|' . $user->id;
         cache()->forget($key);
         cache()->rememberForever($key, function () use ($settings) {
             return $settings;

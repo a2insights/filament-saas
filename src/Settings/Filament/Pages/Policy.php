@@ -12,13 +12,13 @@ use Illuminate\Support\Str;
 
 class Policy extends BasePage
 {
-    protected Width|string|null $maxContentWidth = 'full';
+    protected Width | string | null $maxContentWidth = 'full';
 
     protected string $view = 'filament-saas::features.privacy-policy';
 
     public string $privacyPolicy;
 
-    public function getTitle(): string|Htmlable
+    public function getTitle(): string | Htmlable
     {
         return __('filament-saas::default.privacy-policy.title');
     }

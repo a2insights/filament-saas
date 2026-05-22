@@ -6,6 +6,7 @@ use A2Insights\FilamentSaas\User\Filament\Components\Phone;
 use A2Insights\FilamentSaas\User\Filament\Components\Username;
 use A2Insights\FilamentSaas\User\Filament\Pages\BannedUser;
 use A2Insights\FilamentSaas\User\Filament\Pages\Register;
+use A2Insights\FilamentSaas\User\Livewire\UserPreferencesSettings;
 use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
@@ -29,6 +30,11 @@ class UserServiceProvider extends PackageServiceProvider
         //     'body.start',
         //     fn (): string => '<style>.g-recaptcha { margin: 0 auto;display: table }</style>'
         // );
+
+          \Filament\Support\Facades\FilamentView::registerRenderHook(
+            \Filament\View\PanelsRenderHook::GLOBAL_SEARCH_AFTER,
+            fn (): string => \Illuminate\Support\Facades\Blade::render('@livewire("filament-saas.user-preferences-settings")'),
+        );
     }
 
     public function configurePackage(Package $package): void
@@ -43,5 +49,11 @@ class UserServiceProvider extends PackageServiceProvider
         Livewire::component('Register', Register::class);
         Livewire::component('phone', Phone::class);
         Livewire::component('username', Username::class);
+        Livewire::component('filament-saas.user-preferences-settings', UserPreferencesSettings::class);
+
+        \Filament\Support\Facades\FilamentView::registerRenderHook(
+            \Filament\View\PanelsRenderHook::HEAD_END,
+            fn (): string => view('filament-saas::user.system-zoom-handler')->render(),
+        );
     }
 }

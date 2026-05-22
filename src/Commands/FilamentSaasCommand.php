@@ -47,10 +47,10 @@ class FilamentSaasCommand extends Command
 
         $this->call('shield:setup');
 
-        $this->call('shield:install', ['panel' => 'admin']);
-        $this->call('shield:install', ['panel' => 'sysadmin']);
+        // $this->call('shield:install', ['panel' => 'tenant']);
+        // $this->call('shield:install', ['panel' => 'sysadmin']);
 
-        $this->call('shield:generate', ['--all' => true, '--panel' => 'admin']);
+        $this->call('shield:generate', ['--all' => true, '--panel' => 'tenant']);
         $this->call('shield:generate', ['--all' => true, '--panel' => 'sysadmin']);
 
         $this->call('filament:assets');
@@ -76,6 +76,8 @@ class FilamentSaasCommand extends Command
         $this->call('db:seed');
 
         Process::run('./vendor/bin/pint');
+
+        Process::run('mkdir -p public/css/caresome/filament-neobrutalism-theme && cp vendor/caresome/filament-neobrutalism-theme/resources/css/theme.css public/css/caresome/filament-neobrutalism-theme/neobrutalism-theme.css');
     }
 
     private function setUpSuperAdminAccount()

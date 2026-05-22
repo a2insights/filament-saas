@@ -4,10 +4,8 @@ namespace A2Insights\FilamentSaas\System;
 
 use Filament\Contracts\Plugin;
 use Filament\FilamentManager;
-use Filament\Navigation\NavigationItem;
 use Filament\Panel;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
 
 class SystemPlugin implements Plugin
 {
@@ -27,7 +25,7 @@ class SystemPlugin implements Plugin
      * Class MyClass overrides inline block form.
      *
      * @phpstan-ignore-next-line */
-    public static function get(): Plugin|FilamentManager
+    public static function get(): Plugin | FilamentManager
     {
         return filament(app(static::class)->getId());
     }

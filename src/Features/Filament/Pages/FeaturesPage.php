@@ -26,7 +26,7 @@ class FeaturesPage extends SettingsPage
 
     protected static string $settings = Features::class;
 
-    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-puzzle-piece';
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-puzzle-piece';
 
     protected static ?string $slug = 'settings/features';
 

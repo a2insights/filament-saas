@@ -97,18 +97,18 @@ class FilamentSaasServiceProvider extends PackageServiceProvider
 
         // Handle Stubs
         if (app()->runningInConsole()) {
-            foreach (app(Filesystem::class)->files(__DIR__.'/../stubs/') as $file) {
+            foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
                 $this->publishes([
                     $file->getRealPath() => base_path("stubs/filament-saas/{$file->getFilename()}"),
                 ], 'filament-saas-stubs');
             }
 
             $this->publishes([
-                __DIR__.'/../resources/assets/avatars' => public_path('img/avatars'),
+                __DIR__ . '/../resources/assets/avatars' => public_path('img/avatars'),
             ], 'filament-saas-assets-avatars');
 
             $this->publishes([
-                __DIR__.'/../resources/assets/robots.default.txt' => public_path('robots.default.txt'),
+                __DIR__ . '/../resources/assets/robots.default.txt' => public_path('robots.default.txt'),
             ], 'filament-saas-robots-txt');
         }
 

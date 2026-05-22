@@ -1,14 +1,18 @@
 <?php
 
+use A2Insights\FilamentSaas\User\Filament\UserResource;
+use App\Models\Company;
+use App\Models\User;
+
 return [
     'user' => [
-        'model' => App\Models\User::class,
-        'resource' => A2Insights\FilamentSaas\User\Filament\UserResource::class,
+        'model' => User::class,
+        'resource' => UserResource::class,
         'tenant_scope' => false,
     ],
 
     'company' => [
-        'model' => App\Models\Company::class,
+        'model' => Company::class,
     ],
 
     'terms_of_use_path' => 'terms-of-use',

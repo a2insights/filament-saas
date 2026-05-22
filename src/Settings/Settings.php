@@ -23,7 +23,7 @@ class Settings extends BaseSettings
     public ?string $favicon;
 
     public bool $terms;
-    
+
     public ?string $robots;
 
     public bool $sitemap;
@@ -33,6 +33,7 @@ class Settings extends BaseSettings
     public array $restrict_users;
 
     public ?string $timezone;
+
     public ?string $locale;
 
     public array $locales;

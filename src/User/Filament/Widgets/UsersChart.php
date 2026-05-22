@@ -33,7 +33,7 @@ class UsersChart extends LineChartWidget
         ];
     }
 
-    public function getColumnSpan(): int|string|array
+    public function getColumnSpan(): int | string | array
     {
         return 2;
     }

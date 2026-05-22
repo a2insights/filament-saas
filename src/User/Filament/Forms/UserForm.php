@@ -3,6 +3,8 @@
 namespace A2Insights\FilamentSaas\User\Filament\Forms;
 
 use A2Insights\FilamentSaas\FilamentSaas;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Group;
@@ -53,7 +55,7 @@ class UserForm
 
                     Section::make('Profile & Settings')
                         ->schema([
-                            \Filament\Forms\Components\FileUpload::make('avatar_url')
+                            FileUpload::make('avatar_url')
                                 ->label(__('Avatar'))
                                 ->avatar()
                                 ->imageEditor()
@@ -84,9 +86,9 @@ class UserForm
                                 ->preload()
                                 ->multiple()
                                 ->getOptionLabelFromRecordUsing(fn (Model $record) => Str::title($record->name)),
-                            \Filament\Forms\Components\DateTimePicker::make('email_verified_at')
+                            DateTimePicker::make('email_verified_at')
                                 ->label(__('Email Verified At')),
-                            \Filament\Forms\Components\DateTimePicker::make('banned_at')
+                            DateTimePicker::make('banned_at')
                                 ->label(__('Banned At')),
                         ]),
 
