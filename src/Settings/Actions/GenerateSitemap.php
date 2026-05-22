@@ -4,17 +4,19 @@ namespace A2Insights\FilamentSaas\Settings\Actions;
 
 use A2Insights\FilamentSaas\Settings\Settings;
 use A2Insights\FilamentSaas\Settings\SitemapSettings;
-use Lorisleiva\Actions\Concerns\AsAction;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 
 class GenerateSitemap
 {
-    use AsAction;
-
     /**
      * Generates the sitemap based on the application settings.
      */
+    public static function run(): void
+    {
+        app(static::class)->handle();
+    }
+
     public function handle(): void
     {
         $sitemapSettings = app(SitemapSettings::class);

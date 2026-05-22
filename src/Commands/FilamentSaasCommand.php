@@ -8,6 +8,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Process;
+use Spatie\Permission\Models\Permission;
 
 class FilamentSaasCommand extends Command
 {
@@ -96,6 +97,9 @@ class FilamentSaasCommand extends Command
         );
 
         $user->assignRole(Utils::getSuperAdminName());
+
+        $permissions = Permission::all();
+        $superAdminRole->syncPermissions($permissions);
 
         $this->comment(sprintf('Log in user with email %s and password %s', self::DEFAULT_SUPER_ADMIN_EMAIL, self::DEFAULT_SUPER_ADMIN_PASSWORD));
 
