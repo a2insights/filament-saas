@@ -1,0 +1,10 @@
+ignore:
+  - "config/*"
+  - "database/factories/*"
+  - "database/seeders/*"
+  - "database/migrations/*"
+  - "resources/js/*"
+  - "resources/views/*"
+  - "routes/*"
+  - "storage/*"
+  - "tests/*"

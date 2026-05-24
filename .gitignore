@@ -29,3 +29,5 @@ phpstan.neon
 testbench.yaml
 /docs
 /coverage
+/.vscode
+/.env
