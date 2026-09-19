@@ -8,7 +8,6 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Process;
-use Spatie\Permission\Models\Permission;
 
 class FilamentSaasCommand extends Command
 {
@@ -48,18 +47,21 @@ class FilamentSaasCommand extends Command
 
         $this->call('shield:setup');
 
-        // $this->call('shield:install', ['panel' => 'tenant']);
-        // $this->call('shield:install', ['panel' => 'sysadmin']);
+        if (collect(\Filament\Facades\Filament::getPanels())->has('admin')) {
+            $this->call('shield:install', ['panel' => 'admin']);
+            $this->call('shield:generate', ['--all' => true, '--panel' => 'admin']);
+        }
 
-        $this->call('shield:generate', ['--all' => true, '--panel' => 'tenant']);
-        $this->call('shield:generate', ['--all' => true, '--panel' => 'sysadmin']);
+        if (collect(\Filament\Facades\Filament::getPanels())->has('sysadmin')) {
+            $this->call('shield:install', ['panel' => 'sysadmin']);
+            $this->call('shield:generate', ['--all' => true, '--panel' => 'sysadmin']);
+        }
 
         $this->call('filament:assets');
         $this->call('vendor:publish', ['--tag' => 'themes-assets', '--force' => true]);
         $this->call('vendor:publish', ['--tag' => 'log-viewer-assets', '--force' => true]);
         $this->call('vendor:publish', ['--tag' => 'filament-phone-input-assets', '--force' => true]);
         $this->call('vendor:publish', ['--tag' => 'filament-saas-assets-avatars', '--force' => true]);
-        $this->call('vendor:publish', ['--tag' => 'filament-saas-robots-txt', '--force' => true]);
 
         $this->info('Creating super admin account');
         $superAdmin = $this->setUpSuperAdminAccount();
@@ -77,8 +79,6 @@ class FilamentSaasCommand extends Command
         $this->call('db:seed');
 
         Process::run('./vendor/bin/pint');
-
-        Process::run('mkdir -p public/css/caresome/filament-neobrutalism-theme && cp vendor/caresome/filament-neobrutalism-theme/resources/css/theme.css public/css/caresome/filament-neobrutalism-theme/neobrutalism-theme.css');
     }
 
     private function setUpSuperAdminAccount()
@@ -97,9 +97,6 @@ class FilamentSaasCommand extends Command
         );
 
         $user->assignRole(Utils::getSuperAdminName());
-
-        $permissions = Permission::all();
-        $superAdminRole->syncPermissions($permissions);
 
         $this->comment(sprintf('Log in user with email %s and password %s', self::DEFAULT_SUPER_ADMIN_EMAIL, self::DEFAULT_SUPER_ADMIN_PASSWORD));
 

@@ -1,4 +1,4 @@
-# This is my package filament-saas
+# filament-saas
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/a2insights/filament-saas.svg?style=flat-square)](https://packagist.org/packages/a2insights/filament-saas)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/a2insights/filament-saas/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/a2insights/filament-saas/actions?query=workflow%3Arun-tests+branch%3Amain)
